@@ -1,13 +1,19 @@
 version: 2.1
-jobs:
-  build:
+executors:
+  node-browser-executor:
     docker:
       - image: circleci/node:18-browsers
-    # Steps to the job
+
+jobs:
+  build:
+    executor: node-browser-executor
     steps:
       - checkout
-      - run: npm i -D @playwright/test
-      - run: npx playwright install
       - run:
-          name: Run Playwright specs
-          command: npm run test
+          name: Run tests
+          command: npm test  # Ensure `npm` commands are correct and functional
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
