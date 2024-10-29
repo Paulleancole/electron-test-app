@@ -9,5 +9,7 @@ jobs:
       - run: npm i -D @playwright/test
       - run: npx playwright install
       - run:
+          name: Clear npm cache
+          command: npm cache clean --force
           name: Run Playwright specs
           command: npm run test
