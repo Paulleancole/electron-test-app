@@ -7,7 +7,6 @@ jobs:
     steps:
       - checkout
       - run: npm ci
-      - run: npm i -D @playwright/test@1.17.2
       - run: npx playwright install
       - run:
           name: Run Playwright specs
