@@ -6,6 +6,7 @@ jobs:
     # Steps to the job
     steps:
       - checkout
+      - run: npm cache clean --force
       - run: npm ci
       - run: npx playwright install
       - run:
