@@ -6,6 +6,7 @@ jobs:
     # Steps to the job
     steps:
       - checkout
+      - run: npm i
       - run: npm i -D @playwright/test@1.17.2
       - run: npx playwright install
       - run:
