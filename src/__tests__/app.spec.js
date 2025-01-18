@@ -1,7 +1,10 @@
 const { test, expect, _electron: electron } = require('@playwright/test')
 
 test('an h1 contains hello world"', async () => {
-  const electronApp = await electron.launch({ args: ['.'] })
+  const electronApp = await electron.launch({ 
+    args: ['.'],
+    logger: console
+  })
 
   // Wait for the first BrowserWindow to open
   const window = await electronApp.firstWindow()
