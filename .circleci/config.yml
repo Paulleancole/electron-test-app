@@ -9,7 +9,8 @@ jobs:
       - checkout
       - run: npm cache clean --force
       - run: npm ci
-      - run: npx playwright install
+      - run: npx playwright install --with-deps
       - run:
           name: Run Playwright specs
-          command: npm run test
+          command: npx playwright test
+          # command: npm run test
