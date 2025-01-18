@@ -4,7 +4,8 @@ const path = require('path'); // Import the path module
 test('an h1 contains hello world"', async () => {
   console.log("pathhhh",path.join(__dirname, '../index.js'));
   const electronApp = await electron.launch({ 
-    args: [path.join(__dirname, '../index.js')],
+    args: [path.join(__dirname)],
+    // args: [path.join(__dirname, '../index.js')],
     logger: console
   })
 
