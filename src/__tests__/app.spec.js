@@ -1,4 +1,5 @@
 const { test, expect, _electron: electron } = require('@playwright/test')
+const path = require('path'); // Import the path module
 
 test('an h1 contains hello world"', async () => {
   const electronApp = await electron.launch({ 
