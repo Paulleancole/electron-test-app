@@ -2,7 +2,7 @@ const { test, expect, _electron: electron } = require('@playwright/test')
 
 test('an h1 contains hello world"', async () => {
   const electronApp = await electron.launch({ 
-    args: ['.'],
+    args: ['src'],
     logger: console
   })
 
