@@ -8,6 +8,15 @@ jobs:
     steps:
       - checkout
       - run: npm cache clean --force
+      - run:
+          name: Install dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y \
+              libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 \
+              libasound2 libatk1.0-0 libatk-bridge2.0-0 libnss3 libgbm-dev \
+              libpango-1.0-0 libcups2 libxkbfile1
+      - browser-tools/install-browser-tools
       - run: npm ci
       - run: npx playwright install --with-deps
       - run:
