@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-     - image: circleci/node:latest-browsers
+     - image: cimg/node:18.17.1
     #  - image: circleci/node:18  # Use Node.js 18
     # Steps to the job
     steps:
