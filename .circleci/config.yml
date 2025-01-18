@@ -19,6 +19,11 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps
       - run:
+          name: Start virtual display
+          command: |
+            Xvfb :99 -screen 0 1920x1080x24 &
+            export DISPLAY=:99
+      - run:
           name: Run Playwright specs
           command: npx playwright test
           # command: npm run test
