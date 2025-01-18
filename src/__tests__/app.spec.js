@@ -8,7 +8,8 @@ test('an h1 contains hello world"', async () => {
 
   // Check for the presence of an h1 element with the text "hello"
   const headerElement = await window.$('h1')
-  const headerText = await headerElement.textContent()
+  const headerText = await headerElement.textContent();
+  console.log('loggg',headerText);
   expect(headerText).toBe("💖 Hello World!")
 
   // Close the app
