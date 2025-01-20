@@ -3,6 +3,7 @@ const path = require('path'); // Import the path module
 
 test('an h1 contains hello world"', async () => {
   console.log("pathhhh",path.join(process.cwd(), 'index.js'));
+  console.log('dirname',__dirname);
   const electronApp = await electron.launch({ 
     // args: [path.join(__dirname)],
     args: [path.join(process.cwd(), 'index.js')],
