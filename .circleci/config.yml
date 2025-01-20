@@ -17,6 +17,7 @@ jobs:
               libasound2 libatk1.0-0 libatk-bridge2.0-0 libnss3 libgbm-dev \
               libpango-1.0-0 libcups2 libxkbfile1
       - run: npm ci
+      - run: npm install electron
       - run: npx playwright install --with-deps
       - run:
           name: Start virtual display
