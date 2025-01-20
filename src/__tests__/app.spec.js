@@ -1,5 +1,6 @@
 const { test, expect, _electron: electron } = require('@playwright/test')
 const path = require('path'); // Import the path module
+const { _electron: electron, ElectronApplication, Page } = require('playwright'); // Adjust import as needed
 
 test('an h1 contains hello world"', async () => {
   console.log("pathhhh",path.join(__dirname, '../index.js'));
