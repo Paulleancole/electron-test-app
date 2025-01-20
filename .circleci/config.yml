@@ -1,30 +1,47 @@
 version: 2.1
+
 jobs:
   build:
     docker:
-     - image: cimg/node:18.17.1
-    #  - image: circleci/node:18  # Use Node.js 18
-    # Steps to the job
+      - image: cimg/node:18.17.1 # Use Node.js 18 with essential tools preinstalled
     steps:
       - checkout
-      - run: npm cache clean --force
+
+      # Clean npm cache to avoid stale data
       - run:
-          name: Install dependencies
+          name: Clean npm cache
+          command: npm cache clean --force
+
+      # Install necessary system dependencies
+      - run:
+          name: Install system dependencies
           command: |
             sudo apt-get update
             sudo apt-get install -y \
               libx11-xcb1 libxcomposite1 libxdamage1 libxrandr2 \
               libasound2 libatk1.0-0 libatk-bridge2.0-0 libnss3 libgbm-dev \
               libpango-1.0-0 libcups2 libxkbfile1
-      - run: npm ci
-      - run: npm install electron
-      - run: npx playwright install --with-deps
+
+      # Install Node.js dependencies
+      - run:
+          name: Install Node.js dependencies
+          command: npm ci
+
+      # Install Electron and Playwright dependencies
+      - run:
+          name: Install Electron and Playwright
+          command: |
+            npm install electron --save-dev
+            npx playwright install --with-deps
+
+      # Start a virtual display for Electron
       - run:
           name: Start virtual display
           command: |
             Xvfb :99 -screen 0 1920x1080x24 &
-            export DISPLAY=:99
+            echo "export DISPLAY=:99" >> $BASH_ENV
+
+      # Run Playwright tests
       - run:
-          name: Run Playwright specs
+          name: Run Playwright tests
           command: npx playwright test
-          # command: npm run test
