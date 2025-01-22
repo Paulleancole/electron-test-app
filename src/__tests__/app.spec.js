@@ -1,8 +1,9 @@
 const { test, expect, _electron: electron } = require('@playwright/test');
+const path = require('path');
 
 test('an h1 contains hello world"', async () => {
-  const electronApp = await electron.launch({ args: ['.'] });
-
+  // const electronApp = await electron.launch({ args: ['.'] });
+  const electronApp = await electron.launch({ args: [path.join(__dirname, '../index.js')] });
   // Wait for the first BrowserWindow to open
   const window = await electronApp.firstWindow();
   let url = await window.mainFrame().url();
