@@ -8,12 +8,22 @@ test('an h1 contains hello world"', async () => {
   // console.log('firstWindow',window);
   let url = await window.mainFrame().url();
   console.log('url',url);
-  // Check for the presence of an h1 element with the text "hello"
-  const headerElement = await window.$('h1');
-  // console.log('headerElement',headerElement);
-  const headerText = await headerElement.textContent();
-  console.log('headerElement textContent',headerText);
-  expect(headerText).toBe("💖 Hello World!")
+
+  const headerElement = await window.$('h1'); // Ensure that the h1 exists in the DOM
+if (headerElement) {
+    const headerText = headerElement.textContent; // Accessing property directly
+    console.log('headerElement textContent', headerText);
+    expect(headerText).toBe("💖 Hello World!");
+} else {
+    throw new Error("h1 element not found");
+}
+
+  // // Check for the presence of an h1 element with the text "hello"
+  // const headerElement = await window.$('h1');
+  // // console.log('headerElement',headerElement);
+  // const headerText = await headerElement.textContent();
+  // console.log('headerElement textContent',headerText);
+  // expect(headerText).toBe("💖 Hello World!")
 
   // Close the app
   await electronApp.close()
