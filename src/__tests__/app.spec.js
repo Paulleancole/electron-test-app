@@ -5,11 +5,14 @@ test('an h1 contains hello world"', async () => {
 
   // Wait for the first BrowserWindow to open
   const window = await electronApp.firstWindow()
-
+  // console.log('firstWindow',window);
+  let url = await window.mainFrame().url();
+  console.log('url',url);
   // Check for the presence of an h1 element with the text "hello"
   const headerElement = await window.$('h1');
-  console.log('headerElement',headerElement);
-  const headerText = await headerElement.textContent()
+  // console.log('headerElement',headerElement);
+  const headerText = await headerElement.textContent();
+  console.log('headerElement textContent',headerText);
   expect(headerText).toBe("💖 Hello World!")
 
   // Close the app
